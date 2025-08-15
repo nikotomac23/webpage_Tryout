@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plesna šola Natke Geržina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;700&display=swap" rel="stylesheet">
+  <meta name="author" content="Miha Maček, Reakcija d.o.o.">
+  <meta name="description" content="Plesna šola Natke Geržina — treningi v Mariboru in Slovenski Bistrici. Vpis 2025/2026.">
+  <style>
+    :root{
+      --bg:#0f0710; --card:#111217; --accent:#db7093; --muted:#cfc7d1; --glass:rgba(255,255,255,0.04);
+      --radius:14px; --gap:16px; --max:1100px;
+      font-family: 'Yanone Kaffeesatz', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#0b0510 0%, #120418 100%);color:#fff}
+    .wrap{max-width:var(--max);margin:0 auto;padding:18px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{font-size:20px;font-weight:700;letter-spacing:0.6px}
+    nav{display:flex;gap:8px}
+    .btn{background:var(--accent);padding:10px 14px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.4);}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none}
+    /* hero */
+    .hero{margin-top:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:16px;display:grid;grid-template-columns:1fr;gap:12px;align-items:center}
+    .quote-large{font-size:20px;margin:0;line-height:1.25;font-weight:600}
+    @media(min-width:520px){.quote-large{font-size:22px}}
+    @media(min-width:900px){.quote-large{font-size:26px}}
+    .quote-color{color:var(--accent);font-weight:700}
+    .quote-small{color:var(--muted);margin:6px 0 0}
+
+    /* layout */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:14px;align-items:start}
+    @media(min-width:720px){.grid{grid-template-columns:2fr 1fr}}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.45);backdrop-filter: blur(6px);display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;min-height:120px;transition:transform 220ms ease}
+    .card:hover{transform:translateY(-6px)}
+    .card > div{flex:1}
+    h2{margin:0 0 8px 0;font-size:18px}
+    p{color:var(--muted);margin:0 0 10px 0}
+    img.small{width:72px;height:72px;object-fit:cover;border-radius:10px}
+
+    /* gallery thumbnails row */
+    .thumbnails{display:flex;gap:8px;overflow:auto;padding-bottom:6px}
+    .thumb{min-width:120px;border-radius:10px;overflow:hidden;flex:0 0 auto}
+    .thumb img{display:block;width:100%;height:80px;object-fit:cover}
+
+    /* highlight box */
+    .highlight{border-left:4px solid var(--accent);padding:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);}
+    .highlight-title{font-weight:700;color:var(--accent);margin-bottom:8px}
+
+    /* responsive video */
+    .video-wrap{position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden}
+    .video-wrap iframe{position:absolute;left:0;top:0;width:100%;height:100%;border:0}
+
+    /* contact form */
+    form .field{display:block;width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff}
+    .submit{width:100%;padding:12px;border-radius:10px;border:0;background:var(--accent);font-weight:700}
+
+    footer{opacity:0.8;margin:18px 0 40px 0;color:var(--muted);font-size:13px;text-align:center}
+
+    /* small screens adjustments */
+    @media(min-width:720px){
+      .grid{grid-template-columns:2fr 1fr}
+    }
+
+    /* animations */
+    /* base anim state: slightly lower, a tiny rotateX and reduced scale for a "swim up" feel */
+    [data-anim]{
+      opacity:0;
+      transform:translateY(22px) rotateX(6deg) scale(.995);
+      transform-origin:top center;
+      transition:transform 700ms cubic-bezier(.2,.9,.25,1), opacity 700ms ease-out;
+      will-change:transform, opacity;
+    }
+    /* visible state */
+    [data-anim].in{
+      opacity:1;
+      transform:none;
+      box-shadow:0 12px 30px rgba(0,0,0,0.45);
+    }
+    .pulse{animation:pulse 2.6s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+
+    /* small decorative */
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-size:13px}
+
+    /* mobile-first improvements */
+    .apply-card {border-left:0;border:1px solid rgba(255,110,0,0.20);padding:20px;background:linear-gradient(180deg, rgba(255,124,0,0.20), rgba(255,140,0,0.12));border-radius:12px;box-shadow:0 14px 40px rgba(255,110,0,0.12);}
+    .apply-card .btn{display:block;width:100%;max-width:420px;margin:0 auto;padding:16px 22px;border-radius:14px;font-size:22px;line-height:1.05;font-weight:900;text-transform:uppercase;letter-spacing:0.6px;color:#fff;text-shadow:0 4px 16px rgba(0,0,0,0.6);box-shadow:0 18px 40px rgba(255,120,0,0.22), inset 0 -3px 0 rgba(0,0,0,0.08);border:1px solid rgba(255,255,255,0.06)}
+    @media(min-width:520px){.apply-card .btn{font-size:24px;padding:18px 26px}}
+    @media(min-width:900px){.apply-card .btn{font-size:28px;padding:20px 30px}}
+    @media(min-width:720px){.apply-card .btn{width:auto;margin:0}}
+    @media(min-width:720px){.apply-card .btn{width:auto}}
+    .thumbnails{gap:10px}
+    .thumb{min-width:160px}
+    .thumb img{height:100px}
+    .hero{padding:20px}
+
+    /* global fixes to ensure mobile sections size and proper scaling */
+    *{box-sizing:border-box}
+    html{font-size:16px}
+    header{flex-wrap:wrap}
+    .brand{min-width:0}
+    .logo{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .card{width:100%;box-sizing:border-box}
+    .hero,.apply-card{width:100%}
+    .wrap{background:linear-gradient(180deg, rgba(219,112,147,0.12), rgba(219,112,147,0.06));padding:20px;border-radius:16px}
+    body{background:linear-gradient(180deg, rgba(219,112,147,0.06), #120418 100%)}
+    img.small{max-width:100%;height:auto}
+    header nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px}
+    .apply-cta{display:flex;justify-content:center}
+    .quote-large{font-size:20px}
+
+    
+    
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">Plesna šola Natke Geržina</div>
+        <div class="chip">Maribor • Slovenska Bistrica</div>
+      </div>
+      <nav>
+        <a class="ghost" href="/natka-managerka/">Managerka</a>
+        <a class="ghost" href="/natka-power-dancers/">Power Dancers</a>
+        <a class="btn" href="/index.php">Plesna šola</a>
+      </nav>
+    </header>
+
+    <section class="hero card" aria-labelledby="hero-title" data-anim>
+      <h1 id="hero-title" style="margin:0;font-size:20px">&#8222;Plesna šola Natke Geržina</h1>
+      <p class="quote-large"> <span class="quote-color">Plesna šola Natke Geržina</span> je namenjena vsem <span class="quote-color">otrokom in mladim,</span> ki želijo plesati. Priprave na nastope (prireditve, TV oddaje ...) so polne <span class="quote-color">aktivne zabave</span> in <span class="quote-color">veselega druženja.&#8221;</p>
+      <p class="quote-small">Treningi plesa potekajo v Mariboru in Slovenski Bistrici.</p>
+    </section>
+
+    <!-- application card moved up for mobile-first layout -->
+    <section class="card apply-card" data-anim>
+      <div>
+        <h2 style="margin-top:0">Vpis za sezono 2025/2026</h2>
+        <p style="font-size:18px;margin:6px 0 10px 0">Vpisi za vse nove člane in nadaljevalce je možen s prijavnico:</p>
+        <div class="apply-cta" style="margin-top:8px">
+          <a class="btn" href="Prijavnica.html">SPLETNO PRIJAVNICO</a>
+        </div>
+        <p style="margin:6px 0"><strong>Maribor:</strong> Plesne vaje potekajo na Pobrežju na OŠ Toneta Čufarja.</p>
+        <p style="margin:6px 0"><strong>Slovenska Bistrica:</strong> Plesne vaje potekajo v športni dvorani Bistrica.</p>
+        <p style="margin:6px 0">Vaje potekajo 1x tedensko, če otrok želi, jih lahko obiskuje tudi 2x.</p>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <div class="chip">Otroci 5 - 7 let (60 min) 25 eur/mesec</div>
+          <div class="chip">Otroci nad 7 let (75 min) 27,5 eur/mesec</div>
+        </div>
+      </div>
+    </section>
+
+    <main class="grid">
+      <div>
+        <!-- Video -->
+        <article class="card" data-anim>
+          <div style="display:flex;gap:12px;align-items:center">
+            <img src="images/index-video.jpg" alt="video" class="small">
+            <div>
+              <h2>Video posnetki</h2>
+              <p>Poglej si video posnetke naših nastopov: letni nastopi, nastopi na televiziji (snemanje novoletne oddaje, nastop v TLP), kako izgledajo naši treningi, nastope na modnih revijah ...</p>
+              <p><a class="ghost" href="video-galerije/">Arhiv vseh video posnetkov</a></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Photo galleries -->
+        <article class="card" data-anim>
+          <h2>Foto galerije</h2>
+          <div class="thumbnails" aria-hidden="false">
+            <div class="thumb"><a href="https://www.natkagerzina.si/zakljucek-2022/"><img src="https://www.natkagerzina.si/wp-content/uploads/2022/08/7-160x120.jpg" alt="Zaključek 2022"></a></div>
+            <div class="thumb"><a href="https://www.natkagerzina.si/foto-2020-2021/"><img src="https://www.natkagerzina.si/wp-content/uploads/2021/08/2020-2021_-30-160x120.jpg" alt="Foto 2020-2021"></a></div>
+            <div class="thumb"><a href="https://www.natkagerzina.si/zakljucek-2019/"><img src="https://www.natkagerzina.si/wp-content/uploads/2019/08/0068-160x120.jpg" alt="Zaključek 2019"></a></div>
+            <div class="thumb"><a href="https://www.natkagerzina.si/zakljucek-2018/"><img src="https://www.natkagerzina.si/wp-content/uploads/2018/07/nastop1_00136-160x120.jpg" alt="Zaključek 2018"></a></div>
+            <div class="thumb"><a href="https://www.natkagerzina.si/zakljucek-2017/"><img src="https://www.natkagerzina.si/wp-content/uploads/2017/08/JK-002-160x120.jpg" alt="Zaključek 2017"></a></div>
+          </div>
+          <p><a class="ghost" href="foto-galerije/">Arhiv vseh foto galerij</a></p>
+        </article>
+
+        <!-- About -->
+        <article class="card" data-anim>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <img src="images/index-plesna-sola02.jpg" alt="Natka" class="small">
+            <div>
+              <h2>O plesni šoli Natke Geržina</h2>
+              <p>Natka se s poučevanjem plesa ukvarja že več kot 14 let. Najprej je učila v drugih plesnih šolah, že več kot 12 let pa vodi svojo lastno plesno šolo, kjer so se med drugim učili tudi Sebastian, Bepop, BBT, Party Kids ...</p>
+              <p>Plesna šola deluje v Mariboru in Slovenski Bistrici. Treningi potekajo enkrat tedensko in jih vodi Natka osebno. Le občasno jo nadomestijo sodelavci, ki jim zaupa.</p>
+              <p>Plesna šola Natke Geržina sodeluje z različnimi televizijami (RTV Slovenija, Pop TV, A kanal, Net TV, RTS ...), saj za njihove programe pripravlja zanimive plesne točke svojih varovancev.</p>
+              <p>Natka v okviru plesne šole vsako leto organizira dve prireditvi, na katerih vsi njeni učenci v atraktivnih koreografijah pokažejo pridobljeno plesno znanje. Na teh prireditvah nastopijo tudi že uveljavljeni glasbeniki, ki še posebej razveselijo mlade. Do sedaj so nastopili že: Bepop, Sebastian, Rebeka Dremelj, Manca Špik, Sanja Grohar, Alya, Eva Boto ...</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <aside>
+        <section class="card" data-anim>
+          <h2>Promocijski video</h2>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/7AksSmV5g6s?si=RDaTUjnr2Pzo2IPe" title="Promocijski video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </section>
+
+        <section class="card" data-anim>
+          <div style="display:flex;gap:12px;align-items:center">
+            <img src="images/index-natka-power-dancers.jpg" alt="Power Dancers" class="small">
+            <div>
+              <h2>Power Dancers</h2>
+              <p>Natka Geržina je bila članica ene najbolj znanih slovenskih glasbenih skupin - Power dancers. Skupaj so ustvarile veliko hitov, ki so jih podkrepile z zelo dobrimi plesnimi koreografijami. Svoje videospote so snemale v Parizu, na Hrvaškem, na peščenih Karibih, slikovitem Barbadosu ... <a class="ghost" href="/natka-power-dancers/">Več o Power dancers ...</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" data-anim>
+          <div style="display:flex;gap:12px;align-items:center">
+            <img src="images/index-natka-manager.jpg" alt="Managerka" class="small">
+            <div>
+              <h2>Natka - managerka</h2>
+              <p>Uspeh je tesno povezan s pravim pristopom. Natka Geržina je v svoji managerski karieri pomagala na vrh slovenske estrade že mnogim uspešnim glasbenikom in skupinam. Kot članica strokovne žirije je sodelovala v enem najuspešnejših TV izbiranj pop skupine. <a class="ghost" href="/natka-managerka/">Več o managerstvu ...</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" data-anim>
+          <h2>Kontakt</h2>
+          <p>Če želiš več informacij o Plesni šoli Natke Geržina lahko pokličeš na <strong>041 722 013</strong> ali izpolniš spodnji obrazec.</p>
+
+          <form action="/" method="post" aria-label="Kontaktni obrazec">
+            <input class="field" type="text" name="your-name" placeholder="Tvoje ime in priimek (obvezno)" required>
+            <input class="field" type="email" name="your-email" placeholder="Tvoj e-mail naslov (obvezno)" required>
+            <textarea class="field" name="your-message" rows="4" placeholder="Tvoje sporočilo ..."></textarea>
+            <label style="display:block;color:var(--muted);font-size:13px;margin-bottom:8px">Seštejte šest in dva. Odgovor zapišite s številko:*</label>
+            <input class="field" type="text" name="antispam" placeholder="8" maxlength="2" required>
+            <button class="submit" type="submit">Pošlji</button>
+          </form>
+        </section>
+
+      </aside>
+    </main>
+
+    <footer>
+      <div>Izdelava spletne strani: <a href="http://www.reakcija.si" target="_blank" rel="noopener" style="color:var(--muted)">Reakcija</a></div>
+    </footer>
+  </div>
+
+  <script>
+    // assign stagger delays to cards for a swimming entrance
+    document.querySelectorAll('.card').forEach((el,i)=>{ el.dataset.delay = i * 90; });
+
+    const obs = new IntersectionObserver((entries, observer)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const el = entry.target;
+          const delay = Number(el.dataset.delay) || 0;
+          setTimeout(()=>{
+            el.classList.add('in');
+          }, delay);
+          observer.unobserve(el);
+        }
+      });
+    },{threshold:0.12});
+
+    // observe all animatable blocks (cards, hero, sections)
+    document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+
+    // tiny accessibility: enable keyboard focus for thumbnails
+    document.querySelectorAll('.thumb a').forEach(a=>{a.setAttribute('tabindex','0');});
+
+    // ensure hero gets quick entrance if above fold
+    const hero = document.querySelector('.hero');
+    if(hero) setTimeout(()=>hero.classList.add('in'), 80);
+  </script>
+</body>
+</html>
